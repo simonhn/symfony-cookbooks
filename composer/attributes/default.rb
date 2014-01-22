@@ -24,8 +24,8 @@ default[:composer][:owner] = "root"
 ## Composer Project Options
 default[:composer][:dev] = false
 ## Symfony Recipe Settings
-default[:composer][:sfpath] = "/var/www"
+default[:composer][:sfpath] = "/var/www/html/"
 default[:composer][:sffolder] = "Symfony"
-default[:composer][:sfversion] = ""
-default[:composer][:sfuser] = "root"
-default[:composer][:sfgroup] = "root"
+default[:composer][:sfversion] = "2.4.1"
+default[:composer][:sfuser] = "ec2-user"
+default[:composer][:sfgroup] = "ec2-user"
