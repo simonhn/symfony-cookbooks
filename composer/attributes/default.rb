@@ -27,5 +27,5 @@ default[:composer][:dev] = false
 default[:composer][:sfpath] = "/var/www/html/"
 default[:composer][:sffolder] = "Symfony"
 default[:composer][:sfversion] = "2.4.1"
-default[:composer][:sfuser] = "ec2-user"
-default[:composer][:sfgroup] = "ec2-user"
+default[:composer][:sfuser] = "root"
+default[:composer][:sfgroup] = "root"
