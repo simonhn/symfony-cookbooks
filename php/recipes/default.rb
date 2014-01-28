@@ -64,7 +64,3 @@ end
 package "php55-intl" do
     action :install
 end
-
-package "php-mysqli" do
-    action :install
-end
