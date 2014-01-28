@@ -1,6 +1,11 @@
 # remove any existing php/mysql
 execute "yum remove -y php* php-* mysql http* httpd-*"
 
+Error: php55 conflicts with php-5.3.28-1.2.amzn1.x86_64
+Error: httpd24 conflicts with httpd-2.2.26-1.1.amzn1.x86_64
+Error: php55-common conflicts with php-common-5.3.28-1.2.amzn1.x86_64
+Error: httpd24-tools conflicts with httpd-tools-2.2.26-1.1.amzn1.x86_64
+
 # get the metadata
 execute "yum -q makecache"
 
@@ -65,6 +70,6 @@ package "php55-intl" do
     action :install
 end
 
-package "php55-mysqli" do
+package "php-mysqli" do
     action :install
 end
