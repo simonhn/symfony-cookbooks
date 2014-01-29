@@ -73,7 +73,7 @@ package "php55-pecl-apc" do
   action :install
 end
 
-service 'php55-fpm' do
+service 'php-fpm-5.5' do
     supports :status => true, :restart => true, :reload => true
     action [ :reload ]
 end
