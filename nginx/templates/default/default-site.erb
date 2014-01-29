@@ -8,7 +8,7 @@ server {
   }
   location ~ \.php$ {
         try_files $uri =404;
-        root           <%= node['deploy']['deploy_to'] %>;
+        root           /srv/www/php_sample/current;
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
