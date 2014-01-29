@@ -64,3 +64,21 @@ end
 package "php55-intl" do
     action :install
 end
+
+package "php55-fpm" do
+  action :install
+end
+
+package "php55-pecl-apc" do
+  action :install
+end
+
+service 'php55-fpm' do
+    supports :status => true, :restart => true, :reload => true
+    action [ :reload ]
+end
+
+
+# Point to the right php ini
+execute "rm /etc/php-5.5.d/php.ini"
+execute "ln -s /etc/php-5.5.ini /etc/php-5.5.d/php.ini"
