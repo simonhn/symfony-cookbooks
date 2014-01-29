@@ -75,9 +75,8 @@ end
 
 service 'php-fpm-5.5' do
     supports :status => true, :restart => true, :reload => true
-    action [ :reload ]
+    action :start
 end
-
 
 # Point to the right php ini
 execute "rm /etc/php-5.5.d/php.ini"
