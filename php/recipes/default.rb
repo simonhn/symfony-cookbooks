@@ -81,3 +81,11 @@ end
 # Point to the right php ini
 execute "rm /etc/php-5.5.d/php.ini"
 execute "ln -s /etc/php-5.5.ini /etc/php-5.5.d/php.ini"
+
+# Use custom template, in order to set timezone to UTC
+template "/etc/php-5.5.d/php.ini" do
+  source "php.ini.erb"
+  mode 0644
+  group "root"
+  owner "root"
+end
