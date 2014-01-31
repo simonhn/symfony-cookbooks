@@ -1,6 +1,6 @@
 node[:deploy].each do |application, deploy|
 
-  template "#{deploy[:deploy_to]}/current/app/config/parameters.yml" do
+  template "#{deploy[:deploy_to]}/current/config/parameters.yml" do
     source "parameters.yml.erb"
     mode 0644
     group "root"
@@ -15,7 +15,7 @@ node[:deploy].each do |application, deploy|
       :application => ("#{application}"  rescue nil) 
     )
    only_if do
-     File.directory?("#{deploy[:deploy_to]}/current/app/config")
+     File.directory?("#{deploy[:deploy_to]}/current/config")
    end
   end
 end
