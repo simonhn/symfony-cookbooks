@@ -11,7 +11,7 @@ node[:deploy].each do |application, deploy|
       :user => (deploy[:database][:username] rescue nil),
       :password => (deploy[:database][:password] rescue nil),
       :dbname => (deploy[:database][:dbname] rescue nil),
-      :parameters => (node[:custom_env]  rescue nil), 
+      :port => (deploy[:database][:port] rescue nil),
       :application => ("#{application}"  rescue nil) 
     )
    only_if do
