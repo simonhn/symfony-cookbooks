@@ -1,3 +1,4 @@
+include_recipe 'deploy'
 node[:deploy].each do |application, deploy|
 
   template "#{deploy[:deploy_to]}/current/config/parameters.yml" do
