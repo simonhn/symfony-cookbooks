@@ -9,7 +9,7 @@ This is the current deploy json that we use:
       }
     },
     "deploy": {
-      "php_sample":{
+      "doctrine":{
         "database": {
           "dbname": "dbname", 
           "host": "mydatabase.abcd1234.region.rds.amazonaws.com", 
