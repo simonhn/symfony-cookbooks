@@ -9,7 +9,7 @@ node[:deploy].each do |application, deploy|
 
     variables(
       :host => (deploy[:database][:host] rescue nil),
-      :user => (deploy[:database][:username] rescue nil),
+      :user => (deploy[:database][:user] rescue nil),
       :password => (deploy[:database][:password] rescue nil),
       :dbname => (deploy[:database][:dbname] rescue nil),
       :port => (deploy[:database][:port] rescue nil),
