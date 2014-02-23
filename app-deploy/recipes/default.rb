@@ -21,42 +21,42 @@ node[:deploy].each do |application, deploy|
     command 'curl -sS https://getcomposer.org/installer | php'
     cwd deploy[:current_path]
     user deploy[:user]
-    group deploy[:user]
+    group deploy[:group]
   end
 
   execute 'install_composer_dependencies' do
     command 'php composer.phar install --no-scripts --no-dev --verbose --prefer-source --optimize-autoloader'
     cwd deploy[:current_path]
     user deploy[:user]
-    group deploy[:user]
+    group deploy[:group]
   end
 
   execute 'build_boostrap' do
     command 'php vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php app'
     cwd deploy[:current_path]
     user deploy[:user]
-    group deploy[:user]
+    group deploy[:group]
   end
 
   execute 'clear_cache' do
     command 'php app/console cache:clear --env=prod'
     cwd deploy[:current_path]
     user deploy[:user]
-    group deploy[:user]
+    group deploy[:group]
   end
 
   execute 'assets_dump' do
     command 'php app/console assetic:dump --env=prod'
     cwd deploy[:current_path]
     user deploy[:user]
-    group deploy[:user]
+    group deploy[:group]
   end
 
   execute 'remove_dev' do
     command 'rm web/app_dev.php'
     cwd deploy[:current_path]
     user deploy[:user]
-    group deploy[:user]
+    group deploy[:group]
   end
     
 end
@@ -94,42 +94,42 @@ end
 #             command 'curl -sS https://getcomposer.org/installer | php'
 #             cwd deploy[:current_path]
 #             user deploy[:user]
-#             group deploy[:user]
+#             group deploy[:group]
 #         end
 # 
 #         execute 'install_composer_dependencies' do
 #             command 'php composer.phar install --no-scripts --no-dev --verbose --prefer-source --optimize-autoloader'
 #             cwd deploy[:current_path]
 #             user deploy[:user]
-#             group deploy[:user]
+#             group deploy[:group]
 #         end
 # 
 #         execute 'build_boostrap' do
 #             command 'php vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php app'
 #             cwd deploy[:current_path]
 #             user deploy[:user]
-#             group deploy[:user]
+#             group deploy[:group]
 #         end
 # 
 #         execute 'clear_cache' do
 #             command 'php app/console cache:clear --env=prod'
 #             cwd deploy[:current_path]
 #             user deploy[:user]
-#             group deploy[:user]
+#             group deploy[:group]
 #         end
 # 
 #         execute 'assets_dump' do
 #             command 'php app/console assetic:dump --env=prod'
 #             cwd deploy[:current_path]
 #             user deploy[:user]
-#             group deploy[:user]
+#             group deploy[:group]
 #         end
 # 
 #         execute 'remove_dev' do
 #             command 'rm web/app_dev.php'
 #             cwd deploy[:current_path]
 #             user deploy[:user]
-#             group deploy[:user]
+#             group deploy[:group]
 #         end
 #     end
 #     symlinks({"data" => "data"})
