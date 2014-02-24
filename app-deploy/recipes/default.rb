@@ -73,11 +73,18 @@ node[:deploy].each do |application, deploy|
   
   execute 'log_cache_permissions' do
     cwd deploy[:current_path]
-    command 'setfacl -R -m u:"nginx":rwX -m u:deploy:rwX app/cache app/logs'
-    cwd deploy[:current_path]
-    command 'setfacl -dR -m u:"nginx":rwX -m u:deploy:rwX app/cache app/logs'
+    command 'setfacl -R -m u:"nginx":rwX -m u:"deploy":rwX app/cache app/logs'
+    user deploy[:user]
+    group deploy[:group]
   end
-
+  
+  execute 'log_cache_permissions_1' do
+    cwd deploy[:current_path]
+    command 'setfacl -dR -m u:"nginx":rwX -m u:"deploy":rwX app/cache app/logs'
+    user deploy[:user]
+    group deploy[:group]
+  end
+  
   # execute 'remove_dev' do
   #   command 'rm web/app_dev.php'
   #   cwd deploy[:current_path]
