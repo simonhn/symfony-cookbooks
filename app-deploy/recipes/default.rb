@@ -17,6 +17,25 @@ node[:deploy].each do |application, deploy|
     app application
   end
   
+  template "#{deploy[:deploy_to]}/current/app/config/parameters.yml" do
+    source "parameters.yml.erb"
+    mode 0644
+    group "root"
+    owner "deploy"
+
+    variables(
+      :host => (deploy[:database][:host] rescue nil),
+      :user => (deploy[:database][:user] rescue nil),
+      :password => (deploy[:database][:password] rescue nil),
+      :dbname => (deploy[:database][:dbname] rescue nil),
+      :port => (deploy[:database][:port] rescue nil),
+      :application => ("#{application}"  rescue nil) 
+    )
+   only_if do
+     File.directory?("#{deploy[:deploy_to]}/current/app/config")
+   end
+  end
+  
   execute 'download_composer' do
     command 'curl -sS https://getcomposer.org/installer | php'
     cwd deploy[:current_path]
@@ -52,13 +71,24 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
   end
 
-  execute 'remove_dev' do
-    command 'rm web/app_dev.php'
-    cwd deploy[:current_path]
-    user deploy[:user]
-    group deploy[:group]
+  # execute 'remove_dev' do
+  #   command 'rm web/app_dev.php'
+  #   cwd deploy[:current_path]
+  #   user deploy[:user]
+  #   group deploy[:group]
+  # end
+  
+  # Restart php-fpm and nginx service
+  service 'php5-fpm' do
+    supports :status => true, :restart => true, :reload => true
+    action [ :reload ]
   end
-    
+
+  service 'nginx' do
+    supports :status => true, :restart => true, :reload => true
+    action [ :reload ]
+  end
+  
 end
 
 # 
