@@ -85,7 +85,8 @@ template "/etc/php-5.5.d/php.ini" do
   owner "root"
 end
 
-execute "rf -f /etc/php-fpm-5.5.d/www.conf"
+# remove existing 
+execute "rm -f /etc/php-fpm-5.5.d/www.conf"
 
 # Use custom template, in order to set correct user/grup
 template "/etc/php-fpm-5.5.d/www.conf" do
