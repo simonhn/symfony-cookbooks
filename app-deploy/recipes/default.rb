@@ -71,6 +71,13 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
   end
   
+  execute 'assets_install' do
+    command 'app/console assets:install web --env=prod'
+    cwd deploy[:current_path]
+    user deploy[:user]
+    group deploy[:group]
+  end
+  
   execute 'log_cache_permissions' do
     cwd deploy[:current_path]
     command 'setfacl -R -m u:"nginx":rwX -m u:"deploy":rwX app/cache app/logs'
