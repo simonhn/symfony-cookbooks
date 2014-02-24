@@ -72,8 +72,10 @@ node[:deploy].each do |application, deploy|
   end
   
   execute 'log_cache_permissions' do
-     command 'setfacl -R -m u:"nginx":rwX -m u:`whoami`:rwX app/cache app/logs'
-     command 'setfacl -dR -m u:"nginx":rwX -m u:`whoami`:rwX app/cache app/logs'
+    cwd deploy[:current_path]
+    command 'setfacl -R -m u:"nginx":rwX -m u:`whoami`:rwX app/cache app/logs'
+    cwd deploy[:current_path]
+    command 'setfacl -dR -m u:"nginx":rwX -m u:`whoami`:rwX app/cache app/logs'
   end
 
   # execute 'remove_dev' do
