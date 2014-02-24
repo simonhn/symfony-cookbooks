@@ -70,6 +70,11 @@ node[:deploy].each do |application, deploy|
     user deploy[:user]
     group deploy[:group]
   end
+  
+  execute 'log_cache_permissions' do
+     command 'setfacl -R -m u:"nginx":rwX -m u:`whoami`:rwX app/cache app/logs'
+     command 'setfacl -dR -m u:"nginx":rwX -m u:`whoami`:rwX app/cache app/logs'
+  end
 
   # execute 'remove_dev' do
   #   command 'rm web/app_dev.php'
