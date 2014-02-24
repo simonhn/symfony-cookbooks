@@ -78,15 +78,14 @@ node[:deploy].each do |application, deploy|
   #   group deploy[:group]
   # end
   
-  # Restart php-fpm and nginx service
-  service 'php5-fpm' do
-    supports :status => true, :restart => true, :reload => true
-    action [ :reload ]
-  end
-
   service 'nginx' do
     supports :status => true, :restart => true, :reload => true
-    action [ :reload ]
+    action :restart
+  end
+  
+  service 'php-fpm-5.5' do
+    supports :status => true, :restart => true, :reload => true
+    action :restart
   end
   
 end

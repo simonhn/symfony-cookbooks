@@ -85,6 +85,16 @@ template "/etc/php-5.5.d/php.ini" do
   owner "root"
 end
 
+execute "rf -f /etc/php-fpm-5.5.d/www.conf"
+
+# Use custom template, in order to set correct user/grup
+template "/etc/php-fpm-5.5.d/www.conf" do
+  source "php-fpm.conf.erb"
+  mode 0644
+  group "root"
+  owner "root"
+end
+
 service 'php-fpm-5.5' do
     supports :status => true, :restart => true, :reload => true
     action :start
