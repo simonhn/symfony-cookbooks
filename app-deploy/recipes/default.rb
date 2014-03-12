@@ -17,6 +17,22 @@ node[:deploy].each do |application, deploy|
     app application
   end
   
+  directory "/root/.composer" do
+    mode 0700
+    owner "deploy"
+    group "root"
+    recursive true
+  end
+
+  template "/root/.composer/config.json" do
+    source "composer.config.json.erb"
+    mode 0644
+    group "root"
+    owner "deploy"
+    variables(
+      :github_api_key => (deploy[:github_api_key] rescue nil)
+    )
+  end
   template "#{deploy[:deploy_to]}/current/app/config/parameters.yml" do
     source "parameters.yml.erb"
     mode 0644
@@ -44,7 +60,7 @@ node[:deploy].each do |application, deploy|
   end
 
   execute 'install_composer_dependencies' do
-    command 'php composer.phar install --no-scripts --no-dev --verbose --prefer-source --optimize-autoloader'
+    command 'php composer.phar install --no-scripts --no-dev --verbose --prefer-dist --optimize-autoloader'
     cwd deploy[:current_path]
     user deploy[:user]
     group deploy[:group]

@@ -10,6 +10,7 @@ This is the current deploy json that we use:
     },
     "deploy": {
       "doctrine":{
+        "github_api_key": "f88fe638313asadasd361692ff40a900dca3b7ac56",
         "database": {
           "dbname": "dbname", 
           "host": "mydatabase.abcd1234.region.rds.amazonaws.com", 
