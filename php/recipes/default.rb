@@ -73,8 +73,12 @@ package "php55-pecl-apc" do
   action :install
 end
 
+execute "Remove old php.ini" do
+  command "rm /etc/php-5.5.d/php.ini"
+  only_if { File.exists?("/etc/php-5.5.d/php.ini") }
+end
+
 # Point to the right php ini
-execute "rm /etc/php-5.5.d/php.ini"
 execute "ln -s /etc/php-5.5.ini /etc/php-5.5.d/php.ini"
 
 # Use custom template, in order to set timezone to UTC
