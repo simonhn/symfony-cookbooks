@@ -45,7 +45,10 @@ node[:deploy].each do |application, deploy|
       :password => (deploy[:database][:password] rescue nil),
       :dbname => (deploy[:database][:dbname] rescue nil),
       :port => (deploy[:database][:port] rescue nil),
-      :application => ("#{application}"  rescue nil) 
+      :application => ("#{application}"  rescue nil),
+      :thumbor_host => ("#{thumbor_host}"  rescue nil),
+      :thumbor_port => ("#{thumbor_port}"  rescue nil),
+      :thumbor_secret => ("#{thumbor_secret}"  rescue nil)
     )
    only_if do
      File.directory?("#{deploy[:deploy_to]}/current/app/config")

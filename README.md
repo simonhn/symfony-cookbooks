@@ -9,6 +9,9 @@ This is the current deploy json that we use:
       }
     },
     "deploy": {
+      "thumbor_host": "54.206.195.93",
+      "thumbor_port": "8000"
+      "thumbor_secret": "secret stuff",
       "doctrine":{
         "github_api_key": "f88fe638313asadasd361692ff40a900dca3b7ac56",
         "database": {
