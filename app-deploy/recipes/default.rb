@@ -48,7 +48,8 @@ node[:deploy].each do |application, deploy|
       :application => ("#{application}"  rescue nil),
       :thumbor_host => (deploy[:thumbor_host]  rescue nil),
       :thumbor_port => (deploy[:thumbor_port]  rescue nil),
-      :thumbor_secret => (deploy[:thumbor_secret]  rescue nil)
+      :thumbor_secret => (deploy[:thumbor_secret]  rescue nil),
+      :musicapi => (deploy[:musicapi]  rescue nil)      
     )
    only_if do
      File.directory?("#{deploy[:deploy_to]}/current/app/config")
