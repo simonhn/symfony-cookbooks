@@ -13,6 +13,7 @@ node deploy[:cron_jobs].each do |cron_values|
     month   "#{cron_values[:month]}"
     weekday "#{cron_values[:weekday]}"
     command "#{cron_values[:command]}"
+    user    "deploy"
   end
 end
 # 
