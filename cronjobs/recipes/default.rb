@@ -21,7 +21,7 @@ cron "ingest_episodes_every_hour" do
   day     "*"
   month   "*"
   weekday "*"
-  "command": "cd /srv/www/doctrine/current && app/console papi:ingest:episodes 2>&1 >> /var/log/ingest_episodes.log" 
+  command "cd /srv/www/doctrine/current && app/console papi:ingest:episodes 2>&1 >> /var/log/ingest_episodes.log" 
   action  :create
 end
 # node[:deploy][:doctrine][:cron_jobs].each do |cron_values|
