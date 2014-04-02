@@ -12,7 +12,6 @@ cron "ingest_programs_every_3_hours" do
   month   "*"
   weekday "*"
   command "cd /srv/www/doctrine/current && app/console papi:ingest:programs"
-  user    "deploy"
   action :create
 end
 
