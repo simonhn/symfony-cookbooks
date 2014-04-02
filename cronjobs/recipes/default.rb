@@ -5,7 +5,7 @@
 # Create custom cron jobs using configuration values in the Custom JSON
 #
 
-node deploy[:cron_jobs].each do |cron_values|
+node[:cron_jobs].each do |cron_values|
   cron "#{cron_values[:name]}" do
     minute  "#{cron_values[:minute]}"
     hour    "#{cron_values[:hour]}"
