@@ -30,10 +30,10 @@ default['newrelic']['server_monitoring']['collector_host'] = nil
 default['newrelic']['server_monitoring']['timeout'] = nil
 
 #application monitoring
-default['newrelic']['application_monitoring']['enabled'] = true
+default['newrelic']['application_monitoring']['enabled'] = nil
 default['newrelic']['application_monitoring']['logfile'] = nil
 default['newrelic']['application_monitoring']['loglevel'] = nil
-default['newrelic']['application_monitoring']['appname'] = 'program api'
+default['newrelic']['application_monitoring']['appname'] = nil
 default['newrelic']['application_monitoring']['daemon']['logfile'] = "/var/log/newrelic/newrelic-daemon.log"
 default['newrelic']['application_monitoring']['daemon']['loglevel'] = nil
 default['newrelic']['application_monitoring']['daemon']['port'] = nil
@@ -60,7 +60,7 @@ default['newrelic']['application_monitoring']['transaction_tracer']['stack_trace
 default['newrelic']['application_monitoring']['transaction_tracer']['explain_threshold'] = nil
 default['newrelic']['application_monitoring']['transaction_tracer']['record_sql'] = nil
 default['newrelic']['application_monitoring']['transaction_tracer']['custom'] = nil
-default['newrelic']['application_monitoring']['framework'] = 'symfony2'
+default['newrelic']['application_monitoring']['framework'] = nil
 default['newrelic']['application_monitoring']['webtransaction']['name']['remove_trailing_path'] = nil
 default['newrelic']['application_monitoring']['webtransaction']['name']['functions'] = nil
 default['newrelic']['application_monitoring']['webtransaction']['name']['files'] = nil

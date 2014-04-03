@@ -8,7 +8,7 @@
 include_recipe "newrelic::repository"
 # include_recipe node['newrelic']['php-agent']['php_recipe']
 
-license = node['newrelic']['license']
+license = node['newrelic']['application_monitoring']['license']
 
 #the older version (3.0) had a bug in the init scripts that when it shut down the daemon it would also kill dpkg as it was trying to upgrade
 #let's remove the old packages before continuing
@@ -50,7 +50,7 @@ template "/etc/php-5.5.d/newrelic.ini" do
     group "root"
     mode "0644"
     variables(
-        :enabled => node['newrelic']['enabled'],
+        :enabled => node['newrelic']['application_monitoring']['enabled'],
         :license => license,
         :logfile => node['newrelic']['application_monitoring']['logfile'],
         :loglevel => node['newrelic']['application_monitoring']['loglevel'],
