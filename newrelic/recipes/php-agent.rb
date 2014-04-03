@@ -30,6 +30,14 @@ execute "newrelic-install" do
     notifies :restart, "service[#{node['newrelic']['php-agent']['web_server']['service_name']}]", :delayed
 end
 
+service 'nginx' do
+  supports :status => true, :restart => true, :reload => true
+end
+
+service 'php-fpm-5.5' do
+  supports :status => true, :restart => true, :reload => true
+end
+
 service "newrelic-daemon" do
     supports :status => true, :start => true, :stop => true, :restart => true
 end
