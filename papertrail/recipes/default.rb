@@ -21,7 +21,7 @@ return unless node['papertrail']['logger'] == "rsyslog"
 
 syslogger = "rsyslog"
 
-include_recipe "rsyslog"
+#include_recipe "rsyslog"
 
 package "rsyslog-gnutls" do
   action :install
